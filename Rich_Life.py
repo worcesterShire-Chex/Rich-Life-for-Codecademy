@@ -26,6 +26,8 @@ occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ],
 
 def random_expense():
     pass
+def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
+    pass
 class Credit_Card:
     def __init__(self, bank_name, credit_limit, balance, APR=0.1):
         self.APR = APR # % annual interest rate, take percent you want, say "10.0%", and move decimal two to the left
@@ -65,7 +67,13 @@ class Spouse:
     def __repr__(self):
         return "Name {name}\nGender {gen}\nCredit {cred}".format(name=self.name, gen=self.gender, cred=self.card.name)
 class Child:
-    pass
+    def __init__(self, name, allowance=30, gender=False):
+        self.name = name
+        self.allowance = allowance
+        if gender == True:
+            self.gender = "Girl"
+        else:
+            self.gender = "Boy"
 
 card1 = Credit_Card("Chase Bank", -1000, -800, 0.2)
 
