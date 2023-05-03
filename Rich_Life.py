@@ -24,7 +24,7 @@ occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ],
 
 
 
-def random_expense():
+def random_expense():#car crashes and insurance for monthly goes up, accidents, 
     pass
 def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
     pass
