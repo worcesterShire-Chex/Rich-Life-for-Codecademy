@@ -53,10 +53,17 @@ class Credit_Card:
             return "Bad! Overcharge!"
         self.balance -= chrg
         return "Transaction Success!"
-    def increase_limit():
-        pass
 class Spouse:
-    pass
+    def __init__(self, name, credit_card, gender=False):
+        #may want to include some preferences or some other personality traits
+        self.name = name
+        self.card = credit_card
+        if gender == True:
+            self.gender = "woman"
+        else:
+            self.gender = "Man"
+    def __repr__(self):
+        return "Name {name}\nGender {gen}\nCredit {cred}".format(name=self.name, gen=self.gender, cred=self.card.name)
 class Child:
     pass
 
@@ -67,3 +74,10 @@ print(card1.charge(150))
 print(card1.balance)
 print(card1.charge(500))
 print(card1)
+card1.limit = -2000
+Betsy = Spouse("Betsy", card1, True)
+print()
+print()
+print()
+print()
+print(Betsy)
