@@ -56,10 +56,11 @@ class Credit_Card:
         self.balance -= chrg
         return "Transaction Success!"
 class Spouse:
-    def __init__(self, name, credit_card, gender=False):
+    def __init__(self, name, credit_card, gender=False, age=38):
         #may want to include some preferences or some other personality traits
         self.name = name
         self.card = credit_card
+        self.age = age
         if gender == True:
             self.gender = "woman"
         else:
@@ -67,9 +68,13 @@ class Spouse:
     def __repr__(self):
         return "Name {name}\nGender {gen}\nCredit {cred}".format(name=self.name, gen=self.gender, cred=self.card.name)
 class Child:
-    def __init__(self, name, allowance=30, gender=False):
+    def __init__(self, name, allowance=30, gender=False, age=7, favorite_toy="Lego"):
         self.name = name
         self.allowance = allowance
+        self.age = age
+        self.toy = favorite_toy
+        self.old_toys = []
+        self.old_toys.append(favorite_toy)
         if gender == True:
             self.gender = "Girl"
         else:
@@ -89,3 +94,35 @@ print()
 print()
 print()
 print(Betsy)
+
+card_list = {"card0" : Credit_Card("Redundo Bank", 1000, 2000, 0.9), "DeleteThisCar" : Credit_Card("2nd Redundo Bank", 1700, 500, 0.9)}
+#when the time comes, this will be appended to like this:
+#do some calculations on how their finances are going, determine whether
+#or not their credit limit and APR starts high or low,
+#and write variables to be numbers in randint equation
+inpout = input("What can we help you with. Today.")
+if inpout == "add Card":
+    inclout = input("what will this card's name be?")
+    new_card_name = inclout
+    card_cumulative = 0
+    for crd in card_list.keys():
+        print(card_list[crd].name)
+#let's add up all the money they owe
+        card_cumulative += (card_list[crd].balance * -1)
+    print(card_cumulative)
+    new_limit = round(random.randint(3000, 6000) - (card_cumulative /1.2), -2)
+    new_APR = (5 + (card_cumulative/200))/100
+    card_list[new_card_name] = Credit_Card(new_card_name, new_limit, 0, new_APR)
+    print(card_list[new_card_name])
+
+
+
+# while Total_Debt != really_bad:
+#     sleep(0.5)
+
+
+
+
+
+
+#input("You owe too much! you can't sustain your living expenses anymore.")
