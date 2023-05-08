@@ -22,7 +22,7 @@ occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ],
 
 #Don't worry about these ^^^^^^ data methods for now, we'll impliment something more sophisticated later
 
-
+"Added class for dictionaries of commands, allowing access as list.set[type_of_command](i.e. list.spouse[finance]); most likely easiest solution, needs testing. Added functions to while loop, incomplete. "
 
 def random_expense():#car crashes and insurance for monthly goes up, accidents, 
     pass
@@ -55,14 +55,15 @@ class Credit_Card:
             return "Bad! Overcharge!"
         self.balance -= chrg
         return "Transaction Success!"
+spouse_balance = random.randint(0, 1000)
 class Spouse:
-    def __init__(self, name, credit_card, gender=False, age=38):
+    def __init__(self, name, gender=False, age=38):
         #may want to include some preferences or some other personality traits
         self.name = name
-        self.card = credit_card
+        self.cards = {"Express Credit Card": Credit_Card("Express Bank", 2300, spouse_balance, 0.075)}
         self.age = age
         if gender == True:
-            self.gender = "woman"
+            self.gender = "Woman"
         else:
             self.gender = "Man"
     def __repr__(self):
@@ -80,49 +81,77 @@ class Child:
         else:
             self.gender = "Boy"
 
-card1 = Credit_Card("Chase Bank", -1000, -800, 0.2)
+#early card tests
+# card1 = Credit_Card("Chase Bank", -1000, -800, 0.2)
+# print(card1.balance)
+# print(card1.charge(150))
+# print(card1.balance)
+# print(card1.charge(500))
+# print(card1)
+# card1.limit = -2000
+while True:
+    spouse_gender = input("Do you have a wife, a husband, or neither?")
+    if spouse_gender.lower() == "neither":
+        spouse = None
+        break
+    elif spouse_gender.lower() == "wife":
+        spouse_gender = True
+    elif spouse_gender.lower() == "husband":
+        spouse_gender = False
+    else:
+        print("please check your spelling and try again")
+        print()
+        sleep(0.8)
+        continue
+            
+    spouse_name = input("What is your spouse' name?")
+    spouse_favorite_restaurant = input("What is your spouse' favorite restaurant?")
+    spouse = Spouse(spouse_name, spouse_gender)
+    break
 
-print(card1.balance)
-print(card1.charge(150))
-print(card1.balance)
-print(card1.charge(500))
-print(card1)
-card1.limit = -2000
-Betsy = Spouse("Betsy", card1, True)
 print()
 print()
-print()
-print()
-print(Betsy)
-
-card_list = {"card0" : Credit_Card("Redundo Bank", 1000, 2000, 0.9), "DeleteThisCar" : Credit_Card("2nd Redundo Bank", 1700, 500, 0.9)}
 #when the time comes, this will be appended to like this:
 #do some calculations on how their finances are going, determine whether
 #or not their credit limit and APR starts high or low,
 #and write variables to be numbers in randint equation
-inpout = input("What can we help you with. Today.")
-if inpout == "add Card":
-    inclout = input("what will this card's name be?")
-    new_card_name = inclout
-    card_cumulative = 0
-    for crd in card_list.keys():
-        print(card_list[crd].name)
-#let's add up all the money they owe
-        card_cumulative += (card_list[crd].balance * -1)
-    print(card_cumulative)
-    new_limit = round(random.randint(3000, 6000) - (card_cumulative /1.2), -2)
-    new_APR = (5 + (card_cumulative/200))/100
-    card_list[new_card_name] = Credit_Card(new_card_name, new_limit, 0, new_APR)
-    print(card_list[new_card_name])
+class Commands:
+    def __init__(self):
+        self.bank = {}
+        self.spouse = {}
+        self.child = {}
+        self.work = {}
+command_list = Commands()
+comms need work
 
-
-
-# while Total_Debt != really_bad:
+card_list = {"Chase Credit Card" : Credit_Card("Chase Bank", 1000, 2000, 0.9)}
+card_list_count = len(card_list)
+VERY IMPORTANT!!!  ^^^this is for giving each card a unique ID
+Total_Debt = 0
+while Total_Debt < 20000:
 #     sleep(0.5)
+    input("You're at home, and " + spouse)
+
+
+    inpout = input("Which bank will you call?")
+    input2 = input("Hello, " + inpout + ", how can I help you today?")
+    if input2 == "add card":
+        inclout = input("what will this card's name be?")
+        new_card_name = inclout
+        card_cumulative = 0
+        for crd in card_list.keys():
+    #let's add up all the money they owe
+            card_cumulative += (card_list[crd].balance * -1)
+        new_limit = round(random.randint(3000, 6000) - (card_cumulative /1.2), -2)
+        new_APR = (5 + (card_cumulative/200))/100
+        card_list[new_card_name] = Credit_Card(new_card_name, new_limit, 0, new_APR)
+        print(card_list[new_card_name])
+
+
+    for crd in card_list.keys():
+#let's add up all the money they owe
+        Total_Debt += (card_list[crd].balance * -1)
 
 
 
-
-
-
-#input("You owe too much! you can't sustain your living expenses anymore.")
+input("You owe too much! you can't sustain your living expenses anymore.")
