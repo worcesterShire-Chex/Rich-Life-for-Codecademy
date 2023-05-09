@@ -22,10 +22,15 @@ occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ],
 
 #Don't worry about these ^^^^^^ data methods for now, we'll impliment something more sophisticated later
 
-"Added class for dictionaries of commands, allowing access as list.set[type_of_command](i.e. list.spouse[finance]); most likely easiest solution, needs testing. Added functions to while loop, incomplete. "
+
 
 def random_expense():#car crashes and insurance for monthly goes up, accidents, 
-    pass
+    random_chance = random.randint(0, 100)
+    if random_chance < 20:
+        pass
+    else:
+        print("You're at home, and " + spouse + " doesn't have any plans immediate plans.\n\n\nWhat will you do?")
+        
 def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
     pass
 class Credit_Card:
@@ -117,7 +122,7 @@ print()
 #and write variables to be numbers in randint equation
 class Commands:
     def __init__(self):
-        self.bank = {}
+        self.bank = {"call bank": [""]}
         self.spouse = {}
         self.child = {}
         self.work = {}
@@ -125,19 +130,39 @@ command_list = Commands()
 comms need work
 
 card_list = {"Chase Credit Card" : Credit_Card("Chase Bank", 1000, 2000, 0.9)}
-card_list_count = len(card_list)
-VERY IMPORTANT!!!  ^^^this is for giving each card a unique ID
 Total_Debt = 0
+total_days = 0
+week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+day = 0
+day_of_week = week[day]
 while Total_Debt < 20000:
-#     sleep(0.5)
-    input("You're at home, and " + spouse)
-
+    print()
+    print()
+    sleep(0.2)
+    print()
+    sleep(0.2)
+    print()
+    sleep(0.2)
+    print()
+    sleep(0.2)
+    print(day_of_week)
+    sleep(0.6)
+    print("Day " + str(total_days))
+    # random_expense()
+    # random_event_handler()
+    sleep(1.5)
 
     inpout = input("Which bank will you call?")
     input2 = input("Hello, " + inpout + ", how can I help you today?")
     if input2 == "add card":
         inclout = input("what will this card's name be?")
-        new_card_name = inclout
+        if new_card_name in card_list.keys():
+            card_occurence = {}
+            for crd in card_list.keys():
+                card_occurence[crd] = card_occurence[crd] + 1
+            new_card_name = inclout + '(' + str(card_occurence[new_card_name]) + ')'
+        else:
+            new_card_name = inclout
         card_cumulative = 0
         for crd in card_list.keys():
     #let's add up all the money they owe
@@ -145,12 +170,20 @@ while Total_Debt < 20000:
         new_limit = round(random.randint(3000, 6000) - (card_cumulative /1.2), -2)
         new_APR = (5 + (card_cumulative/200))/100
         card_list[new_card_name] = Credit_Card(new_card_name, new_limit, 0, new_APR)
+        print("We've added a new card for you!")
         print(card_list[new_card_name])
 
 
     for crd in card_list.keys():
 #let's add up all the money they owe
         Total_Debt += (card_list[crd].balance * -1)
+    if day_of_week == week[6]:
+        day = -1
+    day += 1
+    day_of_week = week[day]
+    total_days += 1
+        
+        
 
 
 
