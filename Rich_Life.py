@@ -35,7 +35,7 @@ def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
     pass
 class Credit_Card:
     def __init__(self, bank_name, credit_limit, balance, APR=0.1):
-        self.APR = APR # % annual interest rate, take percent you want, say "10.0%", and move decimal two to the left
+        self.APR = APR # % annual interest rate, 10% = 0.1   5% = 0.05
         self.name = bank_name + " Credit Card"
         if (credit_limit > 0) and (balance > 0):
             self.limit = credit_limit * -1
@@ -57,28 +57,51 @@ class Credit_Card:
             chrg = chrg * -1 #if you have a missing slice of pizza template, and you distribute that to a missing person, there is
             #actually a slice of pizza somewhere, and a person holding it, it's just missing. *brain goes missing instead of exploding*
         if (self.balance - chrg) < self.limit:
-            return "Bad! Overcharge!"
+            return "Your card was declined: Insufficient funds!"
         self.balance -= chrg
         return "Transaction Success!"
 spouse_balance = random.randint(0, 1000)
+
+#We'll need .split() to convert these into useable text and prices
+male_spouse_favorites = {"Food" : ["Chicken Parmesan$8.79", "Hamburger and Fries$10.99", "Pizza Cookie$20", 
+"Breakfast Croissant$7.59", "Calamari$14.59", "Ma Po Tofu$8.99", "Jalapeno Poppers$12.39", "Americana True Colors Test All-American Pulled Pork and Roast Beef(with expired lettuce) Americwich$55"], 
+"games" : ["", "", "", "", "", "", "", "", ""], 
+"clothes": ["", "", "", "", "", "", ""], 
+"shoes" : ["", "", "", "", "", "", "", "", "", "", ""]}
+female_spouse_favorites = {"Food" : ["Chicken Parmesan$8.79", "Strawberry Sorbet$6.89", "Seared Steak with Asparagus$14.45", 
+"Pizza Cookie$20", "Spring Rolls$13.89", "Jalapeno Poppers$12.39", "", ""], 
+"games" : ["Dishonored$39.99", "Slime Rancher$19.99", "", "", "", "", "", "", ""], 
+"clothes": ["Victoria's Secret Blouse$39.99", "High Heels$49.99", "", "", "", "", ""], 
+"shoes" : ["High Heels$49.99", "", "", "", "", "", "", "", "", "", ""], 
+"Makeup" : ["Thrive Foundation and Eyeliner kit$17.79", "", "", "", "", "", "", "", ""]}
+
 class Spouse:
     def __init__(self, name, gender=False, age=38):
         #may want to include some preferences or some other personality traits
+# add something to spouse and child favorites that, when they change, they are either added to gift command list,
+# or added to an invisible list, to try and trick player into forgetting their favorite things
         self.name = name
         self.cards = {"Express Credit Card": Credit_Card("Express Bank", 2300, spouse_balance, 0.075)}
         self.age = age
+        self.favorites = {"Food" : [], "games" : [], "clothes": [], "shoes" : []}
+        self.old_games = []
         if gender == True:
             self.gender = "Woman"
+            self.favorites["Makeup"] = []
         else:
             self.gender = "Man"
     def __repr__(self):
         return "Name {name}\nGender {gen}\nCredit {cred}".format(name=self.name, gen=self.gender, cred=self.card.name)
+    
+male_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
+female_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
 class Child:
     def __init__(self, name, allowance=30, gender=False, age=7, favorite_toy="Lego"):
         self.name = name
         self.allowance = allowance
         self.age = age
         self.toy = favorite_toy
+        self.favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
         self.old_toys = []
         self.old_toys.append(favorite_toy)
         if gender == True:
@@ -95,6 +118,7 @@ class Child:
 # print(card1)
 # card1.limit = -2000
 while True:
+    sleep(0.5)
     spouse_gender = input("Do you have a wife, a husband, or neither?")
     if spouse_gender.lower() == "neither":
         spouse = None
@@ -122,11 +146,13 @@ print()
 #and write variables to be numbers in randint equation
 class Commands:
     def __init__(self):
-        self.bank = {"call bank": [""]}
-        self.spouse = {}
-        self.child = {}
+        self.bank = {"call bank" : ["add card", "cancel card", "loans"]}
+        self.spouse = {"buy gift" : ["needs access to gift list"]}
+        self.child = {"buy toy" : ["needs access to gift list"]}
         self.work = {}
-command_list = Commands()
+        self.house = {}
+        
+user_guide = Commands()
 comms need work
 
 card_list = {"Chase Credit Card" : Credit_Card("Chase Bank", 1000, 2000, 0.9)}
