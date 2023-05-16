@@ -64,26 +64,29 @@ spouse_balance = random.randint(0, 1000)
 
 #We'll need .split() to convert these into useable text and prices
 male_spouse_favorites = {"Food" : ["Chicken Parmesan$8.79", "Hamburger and Fries$10.99", "Pizza Cookie$20", 
-"Breakfast Croissant$7.59", "Calamari$14.59", "Ma Po Tofu$8.99", "Jalapeno Poppers$12.39", "Americana True Colors Test All-American Pulled Pork and Roast Beef(with expired lettuce) Americwich$55"], 
-"games" : ["", "", "", "", "", "", "", "", ""], 
+"Breakfast Croissant$7.59", "Calamari$14.59", "Ma Po Tofu$8.99", "Jalapeno Poppers$12.39", 
+"Americana True Colors Test All-American Pulled Pork and Roast Beef(with expired lettuce) Americwich$55", 
+"", "", ""], 
+"games" : ["Call of Duty: The New One$59.99", "Beet Barry and the Second Great Emu War$19.99", "Star Wars Battlefront XXXVIII$49.99", 
+"Jump Force$39.99", "Dust Force$14.99", "Battlestar Galactica IV$39.99", "Azure Skies$24.99", "Dishonored$39.99", "Slime Rancher$19.99"], 
 "clothes": ["", "", "", "", "", "", ""], 
 "shoes" : ["", "", "", "", "", "", "", "", "", "", ""]}
 female_spouse_favorites = {"Food" : ["Chicken Parmesan$8.79", "Strawberry Sorbet$6.89", "Seared Steak with Asparagus$14.45", 
-"Pizza Cookie$20", "Spring Rolls$13.89", "Jalapeno Poppers$12.39", "", ""], 
-"games" : ["Dishonored$39.99", "Slime Rancher$19.99", "", "", "", "", "", "", ""], 
+"Pizza Cookie$20", "Spring Rolls$13.89", "Jalapeno Poppers$12.39", "Sex on the Beach$17.69", "Bloody Mary$14.49"], 
+"games" : ["Voez$19.99", "Beet Barry and the Second Great Emu War$19.99", "Wolly World$19.99", 
+"Wizard of Legend$14.99", "Dust Force$14.99", "Balan Wonderland$29.99", "Azure Skies$24.99", "Dishonored$39.99", "Slime Rancher$19.99"], 
 "clothes": ["Victoria's Secret Blouse$39.99", "High Heels$49.99", "", "", "", "", ""], 
 "shoes" : ["High Heels$49.99", "", "", "", "", "", "", "", "", "", ""], 
 "Makeup" : ["Thrive Foundation and Eyeliner kit$17.79", "", "", "", "", "", "", "", ""]}
 
 class Spouse:
-    def __init__(self, name, gender=False, age=38):
+    def __init__(self, name, gender=False):
         #may want to include some preferences or some other personality traits
 # add something to spouse and child favorites that, when they change, they are either added to gift command list,
 # or added to an invisible list, to try and trick player into forgetting their favorite things
         self.name = name
         self.cards = {"Express Credit Card": Credit_Card("Express Bank", 2300, spouse_balance, 0.075)}
-        self.age = age
-        self.favorites = {"Food" : [], "games" : [], "clothes": [], "shoes" : []}
+        self.favorites = {"Food" : [], "Games" : [], "Clothes": [], "Shoes" : []}
         self.old_games = []
         if gender == True:
             self.gender = "Woman"
@@ -91,8 +94,10 @@ class Spouse:
         else:
             self.gender = "Man"
     def __repr__(self):
-        return "Name {name}\nGender {gen}\nCredit {cred}".format(name=self.name, gen=self.gender, cred=self.card.name)
+        return "Name {name}\nGender {gen}\n".format(name=self.name, gen=self.gender)
     
+
+
 male_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
 female_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
 class Child:
@@ -134,12 +139,30 @@ while True:
         continue
             
     spouse_name = input("What is your spouse' name?")
-    spouse_favorite_restaurant = input("What is your spouse' favorite restaurant?")
     spouse = Spouse(spouse_name, spouse_gender)
+    spouse_favorite_things = input("What is your spouse' favorite food, and how much does it cost?(please include '$' symbol)")
+    if not '$' in spouse_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    spouse.favorites["Food"] = [spouse_favorite_things]
+    spouse_favorite_things = input("What is your spouse' favorite game, and how much does it cost?")
+    if not '$' in spouse_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    spouse.favorites["Games"] = [spouse_favorite_things]
+    spouse_favorite_things = input("What is your spouse' favorite type of shirt, and how much does it cost?")
+    if not '$' in spouse_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    spouse.favorites["Clothes"] = [spouse_favorite_things]
+    spouse_favorite_things = input("What are your spouse' favorite shoes, and how much do they cost?")
+    if not '$' in spouse_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    spouse.favorites["Shoes"] = [spouse_favorite_things]
+    if spouse_gender == True:
+        spouse_favorite_things = input("What is your spouse' favorite Makeup brand, and how much does it cost?")
+        if not '$' in spouse_favorite_things:
+            raise ValueError("Dollar sign was not present!")
+        spouse.favorites["Makeup"] = [spouse_favorite_things]
     break
 
-print()
-print()
 #when the time comes, this will be appended to like this:
 #do some calculations on how their finances are going, determine whether
 #or not their credit limit and APR starts high or low,
@@ -153,7 +176,7 @@ class Commands:
         self.house = {}
         
 user_guide = Commands()
-comms need work
+# comms need work
 
 card_list = {"Chase Credit Card" : Credit_Card("Chase Bank", 1000, 2000, 0.9)}
 Total_Debt = 0
