@@ -9,13 +9,21 @@ Price_per_Galon = 2.50 #50% chance increases by randint,
 savings = random.randint(0, 2500)
 #IMPORTANT! if gas price > 5.00, pull it down back to 2.50
 common_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ], 
-"Female Spouse" : ["{SSS} wants to go to a gun"],
-"Male Spouse" : ["{QQQ} wants to go to a gun show!"],
+"Female Spouse" : ["{SSS} wants to go to a {blank}!"],
+"Male Spouse" : ["{SSS} wants to go to a {blank}!"],
 "Child" : []}
 occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ], 
-"Female Spouse" : ["{SSS} wants to go to a gun show!"],
-"Male Spouse" : ["{QQQ} wants to go to a gun show!"],
-"Child" : []}
+"Female Spouse" : ["{SSS} needs to get a manicure!"],
+"Male Spouse" : ["{SSS} wants to go to a gun show!"],
+"Child" : [],
+"Car" : []
+}
+mandatory_expenses = {"Player" : ["You broke your arm at the {blank}"], 
+"Female Spouse" : ["{SSS} sprained her hand at the {blank}"], 
+"Male Spouse" : [""], 
+"Child" : [""], 
+"Car" : ["Your car broke down! You'll have to pay a towing fee and get it fixed."]
+}
 
 
 
@@ -23,13 +31,49 @@ occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ],
 #Don't worry about these ^^^^^^ data methods for now, we'll impliment something more sophisticated later
 
 
-
-def random_expense():#car crashes and insurance for monthly goes up, accidents, 
-    random_chance = random.randint(0, 100)
-    if random_chance < 20:
+last_random_expense = ''
+def random_expense(num):#car crashes and insurance for monthly goes up, accidents, 
+    random_chance = random.randint(0, num)
+    child_or_spouse = random.randint(0, num)
+    damage_expense = random.randint(0, 100)
+    common_keys = [i for i in common_expenses.keys()]
+    occasional_keys = [i for i in occasional_expenses.keys()]
+    e = 
+    if random_chance < 15:# occasional
         pass
+    elif random_chance < 30: #common
+        if child_or_spouse < 40:#child
+            expense_list = common_expenses["Child"]
+            the_expense = random.randint(0, len(expense_list)-1)
+        elif child_or_spouse > 40:
+            the_expense = random.randint(0, len(expense_list)-1)
+        elif damage_expense < 15:
+            pass
+        else:
+            pass
     else:
-        print("You're at home, and " + spouse + " doesn't have any plans immediate plans.\n\n\nWhat will you do?")
+        return False
+
+def mandatory_expense(num): #car crashes, accidents/injuries, incurred fees
+    random_chance = random.randint(0, num)
+    child_or_spouse = random.randint(0, num)
+    damage_expense = random.randint(0, 100)
+    common_keys = [i for i in common_expenses.keys()]
+    occasional_keys = [i for i in occasional_expenses.keys()]
+    e = 
+    if random_chance < 30:
+        if damage_expense < 15:
+            pass
+        if child_or_spouse < 40:
+            the_expense = 
+            pass
+        elif child_or_spouse < 70:
+            the_expense = 
+        else:
+            pass
+    else:
+        return False
+    
         
 def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
     pass
@@ -181,9 +225,7 @@ user_guide = Commands()
 card_list = {"Chase Credit Card" : Credit_Card("Chase Bank", 1000, 2000, 0.9)}
 Total_Debt = 0
 total_days = 0
-week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-day = 0
-day_of_week = week[day]
+total_weeks = 0
 while Total_Debt < 20000:
     print()
     print()
@@ -194,7 +236,6 @@ while Total_Debt < 20000:
     sleep(0.2)
     print()
     sleep(0.2)
-    print(day_of_week)
     sleep(0.6)
     print("Day " + str(total_days))
     # random_expense()
@@ -226,11 +267,7 @@ while Total_Debt < 20000:
     for crd in card_list.keys():
 #let's add up all the money they owe
         Total_Debt += (card_list[crd].balance * -1)
-    if day_of_week == week[6]:
-        day = -1
-    day += 1
-    day_of_week = week[day]
-    total_days += 1
+    total_weeks += 1
         
         
 
