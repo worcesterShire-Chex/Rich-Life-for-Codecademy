@@ -12,13 +12,23 @@ common_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ],
 "Female Spouse" : ["{SSS} wants to go to a {blank}!"],
 "Male Spouse" : ["{SSS} wants to go to a {blank}!"],
 "Child" : []}
-occasional_expenses = {"Player" : ["You're low on Gas! We've gotta fill up.", ], 
+occasional_expenses = {"Player" : ["Something optional, not", ], 
 "Female Spouse" : ["{SSS} needs to get a manicure!"],
 "Male Spouse" : ["{SSS} wants to go to a gun show!"],
 "Child" : [],
 "Car" : []
 }
-mandatory_expenses = {"Player" : ["You broke your arm at the {blank}"], 
+
+
+mandatory_expenses = {"Player" : ["You're low on Gas! We've gotta fill up."],
+"Female Spouse" : [],
+"Male Spouse" : [""],
+"Female child" : [],
+"Male child" : [],
+"Car" : []
+}
+
+Damage_expenses = {"Player" : ["You broke your arm at the {blank}"], 
 "Female Spouse" : ["{SSS} sprained her hand at the {blank}"], 
 "Male Spouse" : [""], 
 "Child" : [""], 
@@ -28,31 +38,43 @@ mandatory_expenses = {"Player" : ["You broke your arm at the {blank}"],
 
 
 
+
 #Don't worry about these ^^^^^^ data methods for now, we'll impliment something more sophisticated later
 
 
 last_random_expense = ''
-def random_expense(num):#car crashes and insurance for monthly goes up, accidents, 
+def random_expense(num, s1):#car crashes and insurance for monthly goes up, accidents, 
     random_chance = random.randint(0, num)
-    child_or_spouse = random.randint(0, num)
     damage_expense = random.randint(0, 100)
-    common_keys = [i for i in common_expenses.keys()]
-    occasional_keys = [i for i in occasional_expenses.keys()]
-    e = 
-    if random_chance < 15:# occasional
-        pass
-    elif random_chance < 30: #common
-        if child_or_spouse < 40:#child
-            expense_list = common_expenses["Child"]
-            the_expense = random.randint(0, len(expense_list)-1)
-        elif child_or_spouse > 40:
-            the_expense = random.randint(0, len(expense_list)-1)
-        elif damage_expense < 15:
-            pass
-        else:
-            pass
+    car_EX = random.randint(0, num)
+    if s1.gender == "Man":
+        target = "Male Spouse"
+    elif s1.gender == "Woman":
+        target = "Female Spouse"
+    elif s1.gender == "Boy":
+        target = "Male Child"
+    elif s1.gender == "Girl":
+        target = "Female Child"
     else:
+        target = "Player"
+    if random_chance > 30:
         return False
+    if random_chance < 15:# occasional
+        
+        if damage_expense < 33:#damages, obviously
+            if car_EX > 50:
+                expense_list = Damage_expenses[target]
+            else:
+                expense_list = Damage_expenses["Car"]
+        else:#normal occasion
+            expense_list = occasional_expenses[target]
+            
+    elif random_chance < 30: #common
+        expense_list = common_expenses[target]
+
+
+    return expense_list[random.randint(0, len(expense_list)-1)]
+
 
 def mandatory_expense(num): #car crashes, accidents/injuries, incurred fees
     random_chance = random.randint(0, num)
@@ -60,7 +82,7 @@ def mandatory_expense(num): #car crashes, accidents/injuries, incurred fees
     damage_expense = random.randint(0, 100)
     common_keys = [i for i in common_expenses.keys()]
     occasional_keys = [i for i in occasional_expenses.keys()]
-    e = 
+    e = "Aslo fogor this on"
     if random_chance < 30:
         if damage_expense < 15:
             pass
@@ -183,28 +205,28 @@ while True:
         continue
             
     spouse_name = input("What is your spouse' name?")
-    spouse = Spouse(spouse_name, spouse_gender)
+    spouse1 = Spouse(spouse_name, spouse_gender)
     spouse_favorite_things = input("What is your spouse' favorite food, and how much does it cost?(please include '$' symbol)")
     if not '$' in spouse_favorite_things:
         raise ValueError("Dollar sign was not present!")
-    spouse.favorites["Food"] = [spouse_favorite_things]
+    spouse1.favorites["Food"] = [spouse_favorite_things]
     spouse_favorite_things = input("What is your spouse' favorite game, and how much does it cost?")
     if not '$' in spouse_favorite_things:
         raise ValueError("Dollar sign was not present!")
-    spouse.favorites["Games"] = [spouse_favorite_things]
+    spouse1.favorites["Games"] = [spouse_favorite_things]
     spouse_favorite_things = input("What is your spouse' favorite type of shirt, and how much does it cost?")
     if not '$' in spouse_favorite_things:
         raise ValueError("Dollar sign was not present!")
-    spouse.favorites["Clothes"] = [spouse_favorite_things]
+    spouse1.favorites["Clothes"] = [spouse_favorite_things]
     spouse_favorite_things = input("What are your spouse' favorite shoes, and how much do they cost?")
     if not '$' in spouse_favorite_things:
         raise ValueError("Dollar sign was not present!")
-    spouse.favorites["Shoes"] = [spouse_favorite_things]
+    spouse1.favorites["Shoes"] = [spouse_favorite_things]
     if spouse_gender == True:
         spouse_favorite_things = input("What is your spouse' favorite Makeup brand, and how much does it cost?")
         if not '$' in spouse_favorite_things:
             raise ValueError("Dollar sign was not present!")
-        spouse.favorites["Makeup"] = [spouse_favorite_things]
+        spouse1.favorites["Makeup"] = [spouse_favorite_things]
     break
 
 #when the time comes, this will be appended to like this:
@@ -223,6 +245,7 @@ user_guide = Commands()
 # comms need work
 
 card_list = {"Chase Credit Card" : Credit_Card("Chase Bank", 1000, 2000, 0.9)}
+gas_prices = round(random.randint(1.25, 3.70), 2)
 Total_Debt = 0
 total_days = 0
 total_weeks = 0
