@@ -151,18 +151,20 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
     print()
     sleep(0.6)
     fam_afford = True
-    print(type(s1))
-    sleep(5)
-    if type(s1) == '__main__.Child':
-        print("CHILD TEST CHILD CHECK FOR TYPE CHECK")
+    sleep(2)
+    if "Child" in target:
+        
         if s1.allowance - amount > 0:
             pass
         else:
             fam_afford = False
-    elif type(s1) == '__main__.Spouse':
+    elif "Spouse" in target:
         for ke in s1.cards.keys():
             print(ke)
-            if (s1.ke.balance - amount) > s1.ke.limit:
+            a_card = s1.cards.get(ke)
+            print('Spouse Card Balance: ' + str(s1.cards.get(ke).balance))
+            if (a_card.balance - amount) > a_card.limit:
+                
                 continue
             else:
                 fam_afford = False
@@ -188,7 +190,14 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
             while True:
                 input2 = input("Which Card will you use?\n(select a number)")
                 try:
-                    the_card = numbered_cards[int(input2)]
+                    the_card = numbered_cards[int(input2) - 1]
+                    the_card.charge(amount)
+                    break
+                except:
+                    print("CARD METHODS DID NOT WORK LINE 194")
+                    print(the_card)
+                
+                    
                     
                 
             #a few if statements
@@ -196,7 +205,19 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
             #some_variable.charge(amount)
         elif input2.lower() == 'no':
             print("Tradwife, huh!...... More......Tra-Mmm........ TRADWIFEMORLEIKBADWIfheheheeheh..... heh!")
+            if 'Spouse' in target:
+                print("SPOUSE PAYMENT")
+                a_card.charge(amount)
+                #this needs to include a 'heart' functionality, with a list of different payment flavor text
+                #based on how much love is lost or maintained
+                return s1.name + " reluctantly pays.\n" + s1.name + "'s Card Balance is now " + str(s1.cards.get(ke).balance)
+            elif 'Child' in target:
+                s1.use_allowance(amount)
+                print(s1.name + "'s allowance is now " + str(s1.allowance))
+                return s1.name + " reluctlantly pays for the item"
             #u r badwife and also
+
+            break
             pass
         elif (input2.lower() != 'yes') or (input2.lower() != 'no'):
             print("Please answer yes or no!")
@@ -250,7 +271,8 @@ class Credit_Card:
             #actually a slice of pizza somewhere, and a person holding it, it's just missing. *brain goes missing instead of exploding*
         if (self.balance - chrg) < self.limit:
             return "Card was declined: Insufficient funds!"
-        self.balance -= chrg
+        self.balance -= chrg#2 in here goes to tenths place
+        self.balance = round(self.balance, 2)#2 in here goes to tenths place
         return "Transaction Success!"
 spouse_balance = random.randint(0, 1000)
 
@@ -292,7 +314,8 @@ class Child:
         if (self.allowance - chrg) < 0:
             return self.name + " can't afford it!"
         self.allowance -= chrg
-        return "Transaction Success!"
+        self.allowance = round(self.allowance, 2)
+        return "Piggy Bank Success!"
 
 #early card tests
 # card1 = Credit_Card("Chase Bank", -1000, -800, 0.2)
@@ -364,7 +387,7 @@ gas_prices = gas_prices_num / 100
 Total_Debt = 0
 total_days = 0
 total_weeks = 0
-kelly = Child("Kelly")
+kelly = Child("Kelly", 3000000)
 print(random_expense(30, kelly))
 sys.exit()
 while Total_Debt < 20000:
