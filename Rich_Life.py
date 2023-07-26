@@ -184,17 +184,19 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
             print()
             sleep(0.4)
             for index, crd in enumerate(player_card_list.keys(), start = 1):
-                string_to_print = f"{index}, {crd}"
-                numbered_cards.append(string_to_print)
+                string_to_print = f"{index}) {crd}"
+                numbered_cards.append(crd)
                 print(string_to_print)
             while True:
                 input2 = input("Which Card will you use?\n(select a number)")
+                the_card = numbered_cards[int(input2) - 1]
+                player_card_list[the_card].charge(amount)
                 try:
                     the_card = numbered_cards[int(input2) - 1]
-                    the_card.charge(amount)
-                    break
+                    player_card_list[the_card].charge(amount)
+                    return "You pay " + amount + "for the item(s)"
                 except:
-                    print("CARD METHODS DID NOT WORK LINE 194")
+                    print("CARD METHODS DID NOT WORK LINE 190-something")
                     print(the_card)
                 
                     
