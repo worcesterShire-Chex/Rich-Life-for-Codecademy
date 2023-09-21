@@ -1,31 +1,31 @@
-import sys
-from time import sleep
-import random
 #this project is based on the Netflix series, "How to Get Rich," by Ramit Sethi
 #It features unique ideas on finances, where you spend lavishly on what you love, but ruthlessly cut expenses on
 #things that don't matter to you, as opposed to age-old addages about saving every penny and so on
+#Item was not able to be implimented in a timely manor
+import sys
+from time import sleep
+import random
 
 #We'll need .split() to convert these into useable text and prices
-male_spouse_favorites = {"Food" : ["Chicken Parmesan$8.79", "Hamburger and Fries$10.99", "Pizza Cookie$20", 
-"Breakfast Croissant$7.59", "Calamari$14.59", "Ma Po Tofu$8.99", "Jalapeno Poppers$12.39", 
-"Americana True Colors Test All-American Pulled Pork and Roast Beef(with expired lettuce) Americwich$55", 
+male_spouse_favorites = {"Food" : ["Chicken Parmesan<$>8.79", "Hamburger and Fries<$>10.99", "Pizza Cookie<$>20", 
+"Breakfast Croissant<$>7.59", "Calamari<$>14.59", "Ma Po Tofu<$>8.99", "Jalapeno Poppers<$>12.39", 
+"Americana True Colors Test All-American Pulled Pork and Roast Beef(with expired lettuce) Americwich<$>55", 
 "", "", ""], 
-"games" : ["Call of Duty: The New One$59.99", "Beet Barry and the Second Great Emu War$19.99", "Star Wars Battlefront XXXVIII$49.99", 
-"Jump Force$39.99", "Dust Force$14.99", "Battlestar Galactica IV$39.99", "Azure Skies$24.99", "Dishonored$39.99", "Slime Rancher$19.99"], 
-"clothes": ["", "", "", "", "", "", ""], 
+"games" : ["Call of Duty: The New One<$>59.99", "Beet Barry and the Second Great Emu War<$>19.99", "Star Wars Battlefront XXXVIII<$>49.99", 
+"Jump Force<$>39.99", "Dust Force<$>14.99", "Battlestar Galactica IV<$>39.99", "Azure Skies<$>24.99", "Dishonored<$>39.99", "Slime Rancher<$>19.99"], 
+"clothes": ["Greg Norman Polo<$>59.99", "", "", "", "", "", ""], 
 "shoes" : ["", "", "", "", "", "", "", "", "", "", ""]}
-female_spouse_favorites = {"Food" : ["Chicken Parmesan$8.79", "Strawberry Sorbet$6.89", "Seared Steak with Asparagus$14.45", 
-"Pizza Cookie$20", "Spring Rolls$13.89", "Jalapeno Poppers$12.39", "Sex on the Beach$17.69", "Bloody Mary$14.49"], 
-"games" : ["Voez$19.99", "Beet Barry and the Second Great Emu War$19.99", "Wolly World$19.99", 
-"Wizard of Legend$14.99", "Dust Force$14.99", "Balan Wonderland$29.99", "Azure Skies$24.99", "Dishonored$39.99", "Slime Rancher$19.99"], 
-"clothes": ["Victoria's Secret Blouse$39.99", "High Heels$49.99", "", "", "", "", ""], 
-"shoes" : ["High Heels$49.99", "", "", "", "", "", "", "", "", "", ""], 
-"Makeup" : ["Thrive Foundation and Eyeliner kit$17.79", "", "", "", "", "", "", "", ""]}
+female_spouse_favorites = {"Food" : ["Chicken Parmesan<$>8.79", "Strawberry Sorbet<$>6.89", "Seared Steak with Asparagus<$>14.45", 
+"Pizza Cookie<$>20", "Spring Rolls<$>13.89", "Jalapeno Poppers<$>12.39", "Sex on the Beach<$>17.69", "Bloody Mary<$>14.49"], 
+"games" : ["Voez<$>19.99", "Beet Barry and the Second Great Emu War<$>19.99", "Wolly World<$>19.99", 
+"Wizard of Legend<$>14.99", "Dust Force<$>14.99", "Balan Wonderland<$>29.99", "Azure Skies<$>24.99", "Dishonored<$>39.99", "Slime Rancher<$>19.99"], 
+"clothes": ["Victoria's Secret Blouse<$>39.99", "High Heels<$>49.99", "", "", "", "", ""], 
+"shoes" : ["High Heels<$>49.99", "", "", "", "", "", "", "", "", "", ""], 
+"Makeup" : ["Thrive Foundation and Eyeliner kit<$>17.79", "", "", "", "", "", "", "", ""]}
 
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-male_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
-female_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
+# (See Line 4)male_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
+# (See Line 4)female_child_favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Price_per_Galon = 2.50 #50% chance increases by randint, 
@@ -63,6 +63,10 @@ Damage_expenses = {"Player" : ["You broke your arm {blank}!<$>3000"], #must be f
 }
 
 
+#(see line 4)
+# payment_messages = {"Spouse" : [""],
+# "Child" : []
+# }
 
 
 
@@ -86,37 +90,13 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
     else:
         target = "Player"
     print(random_chance)
-#VVVVVVVVVVVVVVVVVVVVVREIMPLIMENTVVVVVVVVVVVVVVVVVVVVVVVV
-#VVVVVVVVVVVVVVVVVVVVVREIMPLIMENTVVVVVVVVVVVVVVVVVVVVVVVV
-#VVVVVVVVVVVVVVVVVVVVVREIMPLIMENTVVVVVVVVVVVVVVVVVVVVVVVV
-#VVVVVVVVVVVVVVVVVVVVVREIMPLIMENTVVVVVVVVVVVVVVVVVVVVVVVV
-#VVVVVVVVVVVVVVVVVVVVVREIMPLIMENTVVVVVVVVVVVVVVVVVVVVVVVV
-#VVVVVVVVVVVVVVVVVVVVVREIMPLIMENTVVVVVVVVVVVVVVVVVVVVVVVV
-
-
-
-
-    # if random_chance > 30:
-    #     return False
-
-
-
-
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
-#^^^^^^^^^^^^^^^^^^^REIMPLIMENT^^^^^^^^^^^^^^^^^^^^^^
+    if random_chance > 30:
+        return False
     if random_chance < 15:# occasional
         
         if damage_expense < 33:#damages, obviously
             if car_EX > 50:
                 expense_list = Damage_expenses[target]
-                
             else:
                 expense_list = Damage_expenses["Car"]
         else:#normal occasion
@@ -137,11 +117,9 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
     if inc_or_dec < 50:
         numb = random.randint(1000, 3000)
         amount = int(expense_cost) / (numb / 10000)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmount:\n\n" + str(amount))
     else:
         numb = random.randint(1000, 3000)
         amount = int(expense_cost) / (numb / 10000)
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmount:\n\n" + str(amount))
     print()
     print(the_expense)
     print()
@@ -163,7 +141,7 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
             print(ke)
             a_card = s1.cards.get(ke)
             print('Spouse Card Balance: ' + str(s1.cards.get(ke).balance))
-            if (a_card.balance - amount) > a_card.limit:
+            if (a_card.balance - amount) < a_card.limit:
                 
                 continue
             else:
@@ -171,7 +149,7 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
                 break
             
     #part that checks to see if family member can pay(not if it's a car, obvs)
-    while True:
+    while (amount > 0) and (damage_expense < 33):
         if fam_afford == False:
             print(s1.name + " can't pay for it.")
             input2 = input("Will you pay?")
@@ -184,40 +162,76 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
             print()
             sleep(0.4)
             for index, crd in enumerate(player_card_list.keys(), start = 1):
-                string_to_print = f"{index}) {crd}"
+                if (player_card_list[crd].balance - amount) < player_card_list[crd].limit:
+                    string_to_print = f"{index}) {crd} (ineligible)"
+                else:
+                    string_to_print = f"{index}) {crd}"
                 numbered_cards.append(crd)
+                print()
                 print(string_to_print)
-            while True:
-                input2 = input("Which Card will you use?\n(select a number)")
-                the_card = numbered_cards[int(input2) - 1]
-                player_card_list[the_card].charge(amount)
-                try:
-                    the_card = numbered_cards[int(input2) - 1]
-                    player_card_list[the_card].charge(amount)
-                    return "You pay " + amount + "for the item(s)"
-                except:
-                    print("CARD METHODS DID NOT WORK LINE 190-something")
-                    print(the_card)
+                print()
+            input2 = input("Which Card will you use?\n(select a number)")
+            for index, crd in enumerate(player_card_list.keys(), start = 1):
+                if (player_card_list[crd].balance - amount) < player_card_list[crd].limit:
+                    string_to_print = f"{index}) {crd} (ineligible)"
+                else:
+                    string_to_print = f"{index}) {crd}"
+                numbered_cards.append(crd)
+                print()
+                print(string_to_print)
+                print()
+            the_card = numbered_cards[int(input2) - 1]
+            player_card_list[the_card].charge(amount)
+            the_card = numbered_cards[int(input2) - 1]
+            message = player_card_list[the_card].charge(amount)
+            if message == "Transaction Success!":
+                damage_expense = 100
+                print()
+                sleep(1)
+                print()
+                print("You pay " + str(amount) + "for the item(s)")
+                print()
+                sleep(1)
+                return 333
+            else:
+                print()
+                sleep(1)
+                print()
+                print(message)
+                sleep(4)
+                    
                 
-                    
-                    
                 
             #a few if statements
             #some variable representing card
             #some_variable.charge(amount)
         elif input2.lower() == 'no':
-            print("Tradwife, huh!...... More......Tra-Mmm........ TRADWIFEMORLEIKBADWIfheheheeheh..... heh!")
             if 'Spouse' in target:
-                print("SPOUSE PAYMENT")
-                a_card.charge(amount)
+                message = a_card.charge(amount)
                 #this needs to include a 'heart' functionality, with a list of different payment flavor text
                 #based on how much love is lost or maintained
-                return s1.name + " reluctantly pays.\n" + s1.name + "'s Card Balance is now " + str(s1.cards.get(ke).balance)
+                if message == "Transaction Success!":
+                    damage_expense = 100
+                    return s1.name + " reluctantly pays.\n" + s1.name + "'s Card Balance is now " + str(s1.cards.get(ke).balance)
+                else:
+                    print()
+                    sleep(1)
+                    print()
+                    print(message)
+                    sleep(4)
+                    
             elif 'Child' in target:
-                s1.use_allowance(amount)
-                print(s1.name + "'s allowance is now " + str(s1.allowance))
-                return s1.name + " reluctlantly pays for the item"
-            #u r badwife and also
+                message = s1.use_allowance(amount)
+                if message == "Piggy Bank Success!":
+                    print(s1.name + "'s allowance is now " + str(s1.allowance))
+                    damage_expense = 100
+                    return s1.name + " reluctlantly pays for the item"
+                else:
+                    print()
+                    sleep(1)
+                    print()
+                    print(message)
+                    sleep(4)
 
             break
             pass
@@ -226,28 +240,71 @@ def random_expense(num, s1):#car crashes and insurance for monthly goes up, acci
             continue
     #do percentages to increase or decrease value to organically increase or decrease certain expense numbers(an average)
 
-
-def mandatory_expense(num): #car crashes, accidents/injuries, incurred fees
-    random_chance = random.randint(0, num)
-    child_or_spouse = random.randint(0, num)
-    damage_expense = random.randint(0, 100)
-    if random_chance < 30:
-        if damage_expense < 15:
-            pass
-        if child_or_spouse < 40:
-            # the_expense = 
-            pass
-        elif child_or_spouse < 70:
-            # the_expense = 
-            pass
-        else:
-            pass
+def favorites(s1, item_type, new_fav):
+    new_fav_chance = random.randint(0, 100)
+    if s1.gender == "Man":
+        target = "male_spouse_favorites"
+    elif s1.gender == "Woman":
+        target = "female_spouse_favorites"
     else:
-        return False
+        target = "ERROR"
+    
+    if new_fav_chance < 15:
+        new_list = target.get(item_type, "NO FAVORITES IN LIST")
+        new_list.append(new_fav)
+        s1.favorites[item_type] = new_list
+        return s1.favorites[item_type]
+    else:
+        return None
+    var = 0
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Objectives:
+# DONE! (for now...)
+# 1) Impliment same method for asking spouse favs but for kids(easy, just copy code block and 
+# make while loop bound to kidAmount = input('How many kids do you have?'), then 
+# while kidAmount > 0 keep going until 0, will never activate if answered 0)
+
+
+# DONE!
+# 2) Impliment system involving damage_exp variable in rando-expense where the damage-exp var
+# will be changed to 100 when the amount is changed to 0(paid off). this makes it so the mandatory-expenses
+# function is obsolete. An additional thing in getting list of player cards to display when a card is not eligible to
+# pay off the amount.
+
+# 4) work on the implimentation of child and spouse favorites. We need a chance calculation for whether or not 
+# spouse/child gains a new interest/fav. It will be fairly simple to add, just add to their object's list
+
+# 5) Long-Term Goal: get the main while loop up and going, which will be the end-goal
+
+
+# (See Line 4)def mandatory_expense(num): #car crashes, accidents/injuries, incurred fees
+#     (See Line 4)random_chance = random.randint(0, num)
+#     (See Line 4)child_or_spouse = random.randint(0, num)
+#     (See Line 4)damage_expense = random.randint(0, 100)
+#     (See Line 4)if random_chance < 30:
+#         (See Line 4)if damage_expense < 15:
+#             (See Line 4)pass
+#         (See Line 4)if child_or_spouse < 40:
+#             # the_expense = 
+#             (See Line 4)pass
+#         (See Line 4)elif child_or_spouse < 70:
+#             # the_expense = 
+#             (See Line 4)pass
+#         (See Line 4)else:
+#             (See Line 4)pass
+#     (See Line 4)else:
+#         (See Line 4)return False
     
         
-def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
-    pass
+# (See Line 4)def monthly_expenses(): #rent/electric and water bills, mortgage, car insurance
+#     (See Line 4)pass
 class Credit_Card:
     def __init__(self, bank_name, credit_limit, balance, APR=0.1):
         self.APR = APR # % annual interest rate, 10% = 0.1   5% = 0.05
@@ -276,7 +333,10 @@ class Credit_Card:
         self.balance -= chrg#2 in here goes to tenths place
         self.balance = round(self.balance, 2)#2 in here goes to tenths place
         return "Transaction Success!"
+    def pay_card(self, dol):
+        self.balance = self.balance + dol
 spouse_balance = random.randint(0, 1000)
+player_card_list = {"cardBoob" : Credit_Card("The Bank", 1000, 150), "Ansem's Credit Card" : Credit_Card("The Bank", 100, 99), "Ty's Card" : Credit_Card("The Bank", 1000000, 1) }
 
 
 class Spouse:
@@ -288,6 +348,7 @@ class Spouse:
         self.cards = {"Express Credit Card": Credit_Card("Express Bank", 2300, spouse_balance, 0.075)}
         self.favorites = {"Food" : [], "Games" : [], "Clothes": [], "Shoes" : []}
         self.old_games = []
+        self.love = 5
         if gender == True:
             self.gender = "Woman"
             self.favorites["Makeup"] = []
@@ -298,18 +359,25 @@ class Spouse:
     
 
 class Child:
-    def __init__(self, name, allowance=30, gender=False, age=7, favorite_toy="Lego"):
+    def __init__(self, name, allowance=30, gender=False, age=7):
         self.name = name
         self.allowance = allowance
         self.age = age
-        self.toy = favorite_toy
-        self.favorites = {"Food" : [], "games" : [], "clothes": [], "Toys" : []}
-        self.old_toys = []
-        self.old_toys.append(favorite_toy)
+        # (See Line 4)self.toy = favorite_toy
+        self.favorites = {"Food" : [], "Games" : [], "Clothes": [], "Shoes" : []}
+        # (See Line 4)self.old_toys = []
+        self.love = 5
+        # (See Line 4)self.old_toys.append(favorite_toy)
         if gender == True:
             self.gender = "Girl"
         else:
             self.gender = "Boy"
+    
+    def __repr__(self):
+        return """{name} is a(n) {age}-year-old {gender}. 
+        (s)he has ${allc}, and some of their favorite things 
+        are: {f1}, {f2}, {f3}""".format(name=self.name, age=str(self.age), allc=str(self.allowance), 
+        f1=self.favorites['food'][0], f2=self.favorites['clothes'][0], f3=self.favorites['games'][0])
     def use_allowance(self, chrg):
         if chrg < 0: #make sure charge is positive number
             chrg = chrg * -1
@@ -368,6 +436,60 @@ while True:
         spouse1.favorites["Makeup"] = [spouse_favorite_things]
     break
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+kidA = input("How many children do you have?")
+kidAmount = int(kidA)
+child_dict = {}
+child_diff = 1
+while kidAmount > 0:
+    sleep(0.5)
+    print("child " + str(child_diff))
+    Child_gender = input("Is this child a boy or a girl?")
+    if Child_gender.lower() == "neither":
+        Child = None
+        break
+    elif Child_gender.lower() == "girl":
+        Child_gender = True
+    elif Child_gender.lower() == "boy":
+        Child_gender = False
+    else:
+        print("please check your spelling and try again")
+        print()
+        sleep(0.8)
+        continue
+            
+    Child_name = input("What is this Child's name?")
+    child_dict[child_diff] = Child(Child_name, Child_gender)
+    Child_favorite_things = input("What is " + Child_name + "'s favorite food, and how much does it cost?(please include '$' symbol)")
+    if not '$' in Child_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    child_dict[child_diff].favorites["Food"] = [Child_favorite_things]
+    print(child_dict[child_diff].favorites["Food"])
+    Child_favorite_things = input("What is " + Child_name + "'s favorite game, and how much does it cost?")
+    if not '$' in Child_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    child_dict[child_diff].favorites["Games"] = [Child_favorite_things]
+    print(child_dict[child_diff].favorites["Games"])
+    Child_favorite_things = input("What is " + Child_name + "'s favorite type of clothes, and how much does it cost?")
+    if not '$' in Child_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    child_dict[child_diff].favorites["Clothes"] = [Child_favorite_things]
+    print(child_dict[child_diff].favorites["Clothes"])
+    Child_favorite_things = input("What is " + Child_name + "'s favorite shoes, and how much do they cost?")
+    if not '$' in Child_favorite_things:
+        raise ValueError("Dollar sign was not present!")
+    child_dict[child_diff].favorites["Shoes"] = [Child_favorite_things]
+    print(child_dict[child_diff].favorites["Shoes"])
+    kidAmount -= 1
+    child_diff += 1
+print(child_dict)
+Sally = Child('Sally')
+Mally = Spouse('Mally')
+random_expense(10, Sally)
+sys.exit()
 #when the time comes, this will be appended to like this:
 #do some calculations on how their finances are going, determine whether
 #or not their credit limit and APR starts high or low,
@@ -391,7 +513,6 @@ total_days = 0
 total_weeks = 0
 kelly = Child("Kelly", 3000000)
 print(random_expense(30, kelly))
-sys.exit()
 while Total_Debt < 20000:
     print()
     print()
